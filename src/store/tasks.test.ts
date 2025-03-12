@@ -3,6 +3,7 @@ import {
 	addNewTask,
 	deleteTask,
 	setFilter,
+	State,
 	toggleChecked,
 	useTasksStore,
 } from './tasks'
@@ -41,7 +42,7 @@ describe('Task functions', () => {
 })
 
 // Переписал хук useFilteredTasks в функцию и написал тесты.
-const getFilteredTasks = state => {
+const getFilteredTasks = (state: State) => {
 	const tasks = state.tasks
 	const filter = state.filter
 
@@ -56,12 +57,13 @@ const getFilteredTasks = state => {
 
 describe('getFilteredTasks', () => {
 	it('should return all tasks when filter is "all"', () => {
-		const state = {
+		const state: State = {
 			tasks: [
 				{ name: 'Test task 1', id: 1, checked: false },
 				{ name: 'Test task 2', id: 2, checked: true },
 			],
 			filter: 'all',
+			maxId: 2,
 		}
 
 		const filteredTasks = getFilteredTasks(state)
@@ -73,12 +75,13 @@ describe('getFilteredTasks', () => {
 	})
 
 	it('should return active tasks when filter is "active"', () => {
-		const state = {
+		const state: State = {
 			tasks: [
 				{ name: 'Test task 1', id: 1, checked: false },
 				{ name: 'Test task 2', id: 2, checked: true },
 			],
 			filter: 'active',
+			maxId: 2,
 		}
 
 		const filteredTasks = getFilteredTasks(state)
@@ -89,12 +92,13 @@ describe('getFilteredTasks', () => {
 	})
 
 	it('should return completed tasks when filter is "completed"', () => {
-		const state = {
+		const state: State = {
 			tasks: [
 				{ name: 'Test task 1', id: 1, checked: false },
 				{ name: 'Test task 2', id: 2, checked: true },
 			],
 			filter: 'completed',
+			maxId: 2,
 		}
 
 		const filteredTasks = getFilteredTasks(state)

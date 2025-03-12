@@ -3,7 +3,7 @@ import { create } from 'zustand'
 
 export type TaskFilterType = 'all' | 'active' | 'completed'
 
-interface State {
+export interface State {
 	tasks: ITask[]
 	maxId: number
 	filter: TaskFilterType
