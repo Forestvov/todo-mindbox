@@ -2,7 +2,6 @@ import { Button } from '@/components/ui'
 import { setFilter, TaskFilterType, useTasksStore } from '@/store/tasks'
 import React from 'react'
 import { Container } from '../container'
-import { cn } from '@/lib/utils'
 
 interface Props {
 	className?: string
@@ -28,7 +27,7 @@ export const TaskFilters: React.FC<Props> = ({ className }) => {
 					<Button
 						key={key}
 						className='cursor-pointer'
-						variant={activeFilter === key ? 'default' : 'outline'}
+						variant={activeFilter === key ? 'secondary' : 'outline'}
 						value={key}
 						onClick={handleFilterChange}
 					>
